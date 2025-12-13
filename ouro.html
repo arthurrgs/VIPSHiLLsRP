@@ -1,0 +1,118 @@
+<!-- Salve este como: indexbronze.html -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>VIP OURO</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #050505;
+      color: rgb(255, 255, 255);
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background: linear-gradient(to right, #f0c403, #080808, #f0c403);
+      color: #f0c403;
+      padding: 30px 20px;
+      text-align: center;
+      font-size: 2.5em;
+      font-weight: bold;
+    }
+
+    .vip-content {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 40px 20px;
+      gap: 30px;
+      background-color: rgba(10, 10, 20, 0.95);
+      min-height: 100vh;
+    }
+
+    .vip-content img {
+      width: 300px;
+      border-radius: 10px;
+    }
+
+    .vip-info {
+      font-size: 1.2em;
+      text-align: center;
+      max-width: 500px;
+    }
+
+    .vip-price {
+      background-color: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 15px;
+      padding: 20px;
+      font-size: 1.1em;
+      max-width: 350px;
+      text-align: center;
+    }
+
+    .vip-price strong {
+      color: #ff5e00;
+      font-size: 1.4em;
+    }
+
+    .buttons {
+      margin-top: 20px;
+      display: flex;
+      gap: 20px;
+    }
+
+    .btn {
+      padding: 12px 30px;
+      font-size: 1em;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      color: white;
+      transition: background 0.3s ease;
+    }
+
+    .btn-buy {
+      background-color: #28a745;
+    }
+
+    .btn-buy:hover {
+      background-color: #218838;
+    }
+
+    .btn-back {
+      background-color: #555;
+    }
+
+    .btn-back:hover {
+      background-color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <header>VIP OURO</header>
+
+  <div class="vip-content">
+    <img src="r34.png" alt="GTR">
+    <div class="vip-info">
+      <p><strong>R34</strong></p>
+      <p><strong>Uma Pistola, AK47 e 35 mil por semana!💸</strong></p>
+      <p>+ Cargo exclusivo no discord!🟡🔫</p>
+    </div>
+
+    <div class="vip-price">
+      <p><strong>Mensal:</strong> R$ 14,90</p>
+    </div>
+
+    <div class="buttons">
+      <button class="btn btn-buy" onclick="window.open('https://discord.com/channels/1441911366251450511/1449223144652017674', '_blank')">Comprar</button>
+      <button class="btn btn-back" onclick="window.location.href='index.html'">Voltar</button>
+    </div>
+  </div>
+
+</body>
+</html>

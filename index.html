@@ -1,0 +1,186 @@
+<!-- Salve este como: index.html -->
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>VIPS BETA HiLLs RP</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    /* Mesmos estilos que você já tem (mantidos sem alterações)... */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: rgb(5, 5, 5);
+      color: white;
+      min-height: 100vh;
+      position: relative;
+      overflow-x: hidden;
+    }
+    header {
+      padding: 30px 20px;
+      text-align: center;
+      font-size: 2.5em;
+      font-weight: bold;
+      background: linear-gradient(to right, #0105f7, #da0488, #ff0037);
+      color: white;
+      box-shadow: 0 10px 10px rgba(0, 0, 0, 0.938);
+    }
+    .title-part { display: inline-block; }
+    .vips-white { color: white; }
+    .betahills-yellow { color: #e6d300; }
+    .rp-highlight .r { color: #00ff00; }
+    .rp-highlight .p { color: #0033cc; }
+    .vips-section { position: relative; z-index: 1; }
+    canvas#particles-bg {
+      position: absolute; top: 0; left: 0;
+      width: 100%; height: 100%;
+      z-index: 0; pointer-events: none;
+    }
+    .vips-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 60px 20px;
+      gap: 30px;
+      position: relative;
+      z-index: 1;
+      background-color: rgba(10, 10, 20, 0.95);
+    }
+    .vip-card {
+      background-color: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 15px;
+      padding: 15px;
+      width: 200px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      text-align: center;
+      cursor: pointer;
+    }
+    .vip-card:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 15px rgba(255,255,255,0.3);
+    }
+    .vip-card img {
+      width: 100%;
+      height: auto;
+      border-radius: 10px;
+    }
+    .vip-name {
+      margin-top: 10px;
+      font-size: 1.2em;
+      font-weight: bold;
+    }
+    .footer {
+      background-color: #0a0a0a;
+      padding: 40px 20px 30px;
+      text-align: center;
+      color: #ccc;
+    }
+    .support-button {
+      background-color: #28a745;
+      color: white;
+      padding: 12px 30px;
+      font-size: 1.1em;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      box-shadow: 0 4px 10px rgba(0, 255, 100, 0.2);
+    }
+    .support-button:hover { background-color: #218838; }
+    .footer-desc { margin-top: 15px; font-size: 0.95em; color: #aaa; }
+    .footer-rights { margin-top: 10px; font-size: 0.85em; color: #666; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <span class="title-part vips-white">VIPS</span>
+    <span class="title-part betahills-yellow"> BETA HiLLs</span>
+    <span class="title-part rp-highlight"><span class="r">R</span><span class="p">P</span></span>
+  </header>
+
+  <div class="vips-section">
+    <canvas id="particles-bg"></canvas>
+
+    <section class="vips-container">
+      <div class="vip-card" onclick="window.location.href='bronze.html'">
+        <img src="VIPBRONZE.png" alt="VIP Bronze">
+        <div class="vip-name">VIP Bronze</div>
+      </div>
+
+      <div class="vip-card" onclick="window.location.href='ouro.html'">
+        <img src="VIPOURO.png" alt="VIP Ouro">
+        <div class="vip-name">VIP Ouro</div>
+      </div>
+
+      <div class="vip-card" onclick="window.location.href='platina.html'">
+        <img src="VIPPLATINA.png" alt="VIP Platina">
+        <div class="vip-name">VIP Platina</div>
+      </div>
+
+      <div class="vip-card" onclick="window.location.href='esmeralda.html'">
+        <img src="VIPESMERALDA.png" alt="VIP Esmeralda">
+        <div class="vip-name">VIP Esmeralda</div>
+      </div>
+
+      <div class="vip-card" onclick="window.location.href='diamante.html'">
+        <img src="VIPDIAMANTE.png" alt="VIP Diamante">
+        <div class="vip-name">VIP Diamante</div>
+      </div>
+    </section>
+  </div>
+
+  <footer class="footer">
+    <button class="support-button" onclick="window.open('https://discord.com/channels/1441911366251450511/1449230583690690750', '_blank')">Suporte</button>
+    <p class="footer-desc">Entre em contato com nossa equipe através do Discord.</p>
+    <p class="footer-rights">Todos os Direitos Reservados</p>
+  </footer>
+
+  <script>
+    const canvas = document.getElementById('particles-bg');
+    const ctx = canvas.getContext('2d');
+    let particlesArray = [];
+    const colors = ["#ff0055", "#0066ff", "#00ffaa", "#ffffff"];
+    const resizeCanvas = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = document.querySelector('.vips-section').offsetHeight;
+    };
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 3 + 1;
+        this.speedX = Math.random() * 1 - 0.5;
+        this.speedY = Math.random() * 1 - 0.5;
+        this.color = colors[Math.floor(Math.random() * colors.length)];
+      }
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+      }
+      draw() {
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+    function initParticles() {
+      particlesArray = [];
+      for (let i = 0; i < 80; i++) {
+        particlesArray.push(new Particle());
+      }
+    }
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particlesArray.forEach(p => { p.update(); p.draw(); });
+      requestAnimationFrame(animateParticles);
+    }
+    window.addEventListener('resize', () => { resizeCanvas(); initParticles(); });
+    resizeCanvas(); initParticles(); animateParticles();
+  </script>
+</body>
+</html>
