@@ -4,7 +4,8 @@
 <head>
   <meta charset="UTF-8">
   <title>VIP BRONZE</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
   <style>
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -12,6 +13,7 @@
       color: rgb(255, 255, 255);
       margin: 0;
       padding: 0;
+      overflow-x: hidden;
     }
 
     header {
@@ -28,13 +30,15 @@
       flex-direction: column;
       align-items: center;
       padding: 40px 20px;
-      gap: 30px;
+      gap: 25px;
       background-color: rgba(10, 10, 20, 0.95);
-      min-height: 100vh;
+      min-height: calc(100vh - 140px);
+      box-sizing: border-box;
     }
 
     .vip-content img {
       width: 300px;
+      max-width: 80vw;
       border-radius: 10px;
     }
 
@@ -42,6 +46,8 @@
       font-size: 1.2em;
       text-align: center;
       max-width: 500px;
+      line-height: 1.4;
+      padding: 0 10px;
     }
 
     .vip-price {
@@ -51,6 +57,7 @@
       padding: 20px;
       font-size: 1.1em;
       max-width: 350px;
+      width: 90%;
       text-align: center;
     }
 
@@ -60,19 +67,24 @@
     }
 
     .buttons {
-      margin-top: 20px;
+      margin-top: 10px;
       display: flex;
-      gap: 20px;
+      gap: 15px;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
     }
 
     .btn {
-      padding: 12px 30px;
+      padding: 12px 25px;
       font-size: 1em;
       border: none;
       border-radius: 25px;
       cursor: pointer;
       color: white;
       transition: background 0.3s ease;
+      min-width: 120px;
+      text-align: center;
     }
 
     .btn-buy {
@@ -90,18 +102,61 @@
     .btn-back:hover {
       background-color: #333;
     }
+
+    /* Neve */
+    .snowflake {
+      position: fixed;
+      top: -10px;
+      color: white;
+      font-size: 1em;
+      user-select: none;
+      pointer-events: none;
+      animation: fall linear infinite;
+      opacity: 0.9;
+      z-index: 1;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(110vh); }
+    }
+
+    /* Ajuste RESPONSIVO para Mobile */
+    @media screen and (max-width: 600px) {
+      header { font-size: 1.9em; padding: 25px 10px; }
+      .vip-info { font-size: 1.05em; }
+      .btn { font-size: 0.9em; padding: 10px 18px; }
+    }
+
   </style>
 </head>
 <body>
 
-  <header>VIP BRONZE</header>
+  <!-- neve -->
+  <script>
+    function criarNeve() {
+      const snow = document.createElement("div");
+      snow.classList.add("snowflake");
+      snow.innerHTML = "❄";
+      snow.style.left = Math.random() * 100 + "vw";
+      snow.style.animationDuration = (Math.random() * 5 + 3) + "s";
+      snow.style.fontSize = (Math.random() * 18 + 10) + "px";
+      document.body.appendChild(snow);
+      setTimeout(() => snow.remove(), 9000);
+    }
+    setInterval(criarNeve, 60);
+  </script>
+
+  <header>VIP BRONZE 🎅🎄</header>
 
   <div class="vip-content">
+
     <img src="gol.png" alt="GOL">
+
     <div class="vip-info">
-      <p><strong>GOL</strong></p>
+      <p><strong>GOL</strong> 🎅</p>
       <p><strong>Uma Pistola e 25 mil por semana!💸</strong></p>
-      <p>+ Cargo exclusivo em nosso dicord!🟠🔫</p>
+      <p>+ Cargo exclusivo em nosso dicord!🟠🔫 🎄</p>
     </div>
 
     <div class="vip-price">
@@ -112,8 +167,8 @@
       <button class="btn btn-buy" onclick="window.open('https://discord.com/channels/1441911366251450511/1449223144652017674', '_blank')">Comprar</button>
       <button class="btn btn-back" onclick="window.location.href='index.html'">Voltar</button>
     </div>
+
   </div>
 
 </body>
 </html>
-
