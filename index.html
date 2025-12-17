@@ -1,4 +1,3 @@
-<!-- Salve este como: index.html -->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -6,7 +5,6 @@
   <title>VIPS BETA HiLLs🔱</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    /* Mesmos estilos que você já tem (mantidos sem alterações)... */
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -16,6 +14,21 @@
       position: relative;
       overflow-x: hidden;
     }
+
+    body::after {
+      content: "9";
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: 120vh;
+      font-weight: bold;
+      color: rgba(255, 255, 255, 0.03);
+      z-index: 0;
+      pointer-events: none;
+      user-select: none;
+    }
+
     header {
       padding: 30px 20px;
       text-align: center;
@@ -24,18 +37,38 @@
       background: linear-gradient(to right, #0105f7, #da0488, #ff0037);
       color: white;
       box-shadow: 0 10px 10px rgba(0, 0, 0, 0.938);
+      position: relative;
+      z-index: 2;
     }
+
+    header::before {
+      content: "🎄";
+      position: absolute;
+      left: 20px;
+      top: 20px;
+      font-size: 40px;
+      animation: pulse 2s infinite;
+    }
+    header::after {
+      content: "🎅";
+      position: absolute;
+      right: 20px;
+      top: 20px;
+      font-size: 40px;
+      animation: pulse 2s infinite;
+    }
+
     .title-part { display: inline-block; }
     .vips-white { color: white; }
     .betahills-yellow { color: #e6d300; }
-    .rp-highlight .r { color: #00ff00; }
-    .rp-highlight .p { color: #0033cc; }
     .vips-section { position: relative; z-index: 1; }
+
     canvas#particles-bg {
       position: absolute; top: 0; left: 0;
       width: 100%; height: 100%;
       z-index: 0; pointer-events: none;
     }
+
     .vips-container {
       display: flex;
       flex-wrap: wrap;
@@ -43,9 +76,10 @@
       padding: 60px 20px;
       gap: 30px;
       position: relative;
-      z-index: 1;
+      z-index: 3;
       background-color: rgba(10, 10, 20, 0.95);
     }
+
     .vip-card {
       background-color: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.1);
@@ -55,7 +89,20 @@
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       text-align: center;
       cursor: pointer;
+      position: relative;
+      z-index: 3;
     }
+
+    .vip-card::before {
+      content: "🎄";
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      font-size: 30px;
+      opacity: 0.8;
+      animation: swing 3s infinite ease-in-out;
+    }
+
     .vip-card:hover {
       transform: scale(1.05);
       box-shadow: 0 0 15px rgba(255,255,255,0.3);
@@ -70,12 +117,26 @@
       font-size: 1.2em;
       font-weight: bold;
     }
+
     .footer {
       background-color: #0a0a0a;
       padding: 40px 20px 30px;
       text-align: center;
       color: #ccc;
+      position: relative;
+      z-index: 3;
     }
+
+    .footer::before {
+      content: "❄️❄️❄️";
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 25px;
+      animation: snow 4s infinite linear;
+    }
+
     .support-button {
       background-color: #28a745;
       color: white;
@@ -90,9 +151,70 @@
     .support-button:hover { background-color: #218838; }
     .footer-desc { margin-top: 15px; font-size: 0.95em; color: #aaa; }
     .footer-rights { margin-top: 10px; font-size: 0.85em; color: #666; }
+
+    @keyframes pulse {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.2); opacity: 0.6; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+
+    @keyframes swing {
+      0% { transform: rotate(0deg); }
+      50% { transform: rotate(15deg); }
+      100% { transform: rotate(0deg); }
+    }
+
+    @keyframes snow {
+      0% { opacity: 0.3; }
+      50% { opacity: 1; }
+      100% { opacity: 0.3; }
+    }
+
+    /* 🌟 bola1 ajustada */
+    .bola1 {
+      position: fixed;
+      width: 140px;
+      bottom: -20px;
+      right: -25px;
+      z-index: 5;
+      opacity: 0.85;
+      transform: rotate(-25deg);
+      animation: pulseRight 2.8s infinite ease-in-out;
+      pointer-events: none;
+    }
+
+    /* 🌟 bola2 ajustada */
+    .bola2 {
+      position: fixed;
+      width: 90px;
+      bottom: 15px;
+      left: -15px;
+      z-index: 5;
+      opacity: 0.85;
+      transform: rotate(15deg);
+      animation: pulseLeft 3.6s infinite ease-in-out;
+      pointer-events: none;
+    }
+
+    @keyframes pulseRight {
+      0% { transform: scale(1) rotate(-25deg); }
+      50% { transform: scale(1.18) rotate(-25deg); }
+      100% { transform: scale(1) rotate(-25deg); }
+    }
+
+    @keyframes pulseLeft {
+      0% { transform: scale(1) rotate(15deg); }
+      50% { transform: scale(1.1) rotate(15deg); }
+      100% { transform: scale(1) rotate(15deg); }
+    }
+
   </style>
 </head>
 <body>
+
+  <!-- IMAGENS LATERAIS -->
+  <img src="bola1.png" class="bola1">
+  <img src="bola2.png" class="bola2">
 
   <header>
     <span class="title-part vips-white">VIPS</span>
@@ -105,27 +227,27 @@
     <section class="vips-container">
       <div class="vip-card" onclick="window.location.href='bronze.html'">
         <img src="VIPBRONZE.png" alt="VIP Bronze">
-        <div class="vip-name">VIP Bronze</div>
+        <div class="vip-name">🟠 VIP Bronze</div>
       </div>
 
       <div class="vip-card" onclick="window.location.href='ouro.html'">
         <img src="VIPOURO.png" alt="VIP Ouro">
-        <div class="vip-name">VIP Ouro</div>
+        <div class="vip-name">🟡 VIP Ouro</div>
       </div>
 
       <div class="vip-card" onclick="window.location.href='platina.html'">
         <img src="VIPPLATINA.png" alt="VIP Platina">
-        <div class="vip-name">VIP Platina</div>
+        <div class="vip-name">⚪ VIP Platina</div>
       </div>
 
       <div class="vip-card" onclick="window.location.href='esmeralda.html'">
         <img src="VIPESMERALDA.png" alt="VIP Esmeralda">
-        <div class="vip-name">VIP Esmeralda</div>
+        <div class="vip-name">🟣 VIP Esmeralda</div>
       </div>
 
       <div class="vip-card" onclick="window.location.href='diamante.html'">
         <img src="VIPDIAMANTE.png" alt="VIP Diamante">
-        <div class="vip-name">VIP Diamante</div>
+        <div class="vip-name">🔵 VIP Diamante</div>
       </div>
     </section>
   </div>
@@ -140,25 +262,28 @@
     const canvas = document.getElementById('particles-bg');
     const ctx = canvas.getContext('2d');
     let particlesArray = [];
-    const colors = ["#ff0055", "#0066ff", "#00ffaa", "#ffffff"];
+
     const resizeCanvas = () => {
       canvas.width = window.innerWidth;
       canvas.height = document.querySelector('.vips-section').offsetHeight;
     };
+
     class Particle {
       constructor() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
-        this.size = Math.random() * 3 + 1;
-        this.speedX = Math.random() * 1 - 0.5;
-        this.speedY = Math.random() * 1 - 0.5;
-        this.color = colors[Math.floor(Math.random() * colors.length)];
+        this.size = Math.random() * 5 + 3;
+        this.speedX = (Math.random() * 0.6) - 0.3;
+        this.speedY = Math.random() * 1.6 + 1;
+        this.color = "#ffffff";
       }
       update() {
         this.x += this.speedX;
         this.y += this.speedY;
-        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
-        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+        if (this.y > canvas.height) {
+          this.y = 0;
+          this.x = Math.random() * canvas.width;
+        }
       }
       draw() {
         ctx.fillStyle = this.color;
@@ -167,21 +292,25 @@
         ctx.fill();
       }
     }
+
     function initParticles() {
       particlesArray = [];
-      for (let i = 0; i < 80; i++) {
+      for (let i = 0; i < 260; i++) {
         particlesArray.push(new Particle());
       }
     }
+
     function animateParticles() {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       particlesArray.forEach(p => { p.update(); p.draw(); });
       requestAnimationFrame(animateParticles);
     }
+
     window.addEventListener('resize', () => { resizeCanvas(); initParticles(); });
-    resizeCanvas(); initParticles(); animateParticles();
+
+    resizeCanvas();
+    initParticles();
+    animateParticles();
   </script>
 </body>
 </html>
-
-
