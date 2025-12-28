@@ -1,173 +1,192 @@
-<!-- Salve este como: platina.html -->
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
   <meta charset="UTF-8">
-  <title>VIP PLATINA</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+  <title>VIP Platina • HiLLs RP</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
   <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Segoe UI', sans-serif;
       background: #050505;
-      color: rgb(250, 246, 246);
-      margin: 0;
-      padding: 0;
-      overflow-x: hidden;
+      color: #faf6f6;
+      min-height: 100vh;
     }
 
+    /* ================= HEADER ================= */
+
     header {
-      background: linear-gradient(to right, #d3feff, #080808, #d3feff);
-      color: #d3feff;
-      padding: 30px 20px;
+      padding: 80px 20px 70px;
       text-align: center;
-      font-size: 2.5em;
-      font-weight: bold;
+      background: linear-gradient(135deg, #d3feff, #080808, #d3feff);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.9);
+      position: relative;
     }
+
+    header::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 160px;
+      height: 3px;
+      background: rgba(255,255,255,0.45);
+      border-radius: 5px;
+    }
+
+    header h1 {
+      font-size: 3em;
+      letter-spacing: 3px;
+      color: #d3feff;
+    }
+
+    header p {
+      margin-top: 15px;
+      font-size: 1.1em;
+      color: rgba(255,255,255,0.9);
+    }
+
+    /* ================= CONTENT ================= */
 
     .vip-content {
       display: flex;
       flex-direction: column;
       align-items: center;
-      padding: 40px 20px;
-      gap: 25px;
-      background-color: rgba(10, 10, 20, 0.95);
-      min-height: calc(100vh - 140px);
-      box-sizing: border-box;
+      padding: 70px 20px;
+      gap: 35px;
+      background: rgba(10, 10, 20, 0.96);
+      min-height: 100vh;
     }
 
     .vip-content img {
       width: 300px;
-      max-width: 80vw;
-      border-radius: 10px;
+      border-radius: 16px;
+      box-shadow: 0 0 28px rgba(211,254,255,0.45);
+      transition: transform 0.3s ease;
+    }
+
+    .vip-content img:hover {
+      transform: scale(1.05);
     }
 
     .vip-info {
-      font-size: 1.2em;
+      font-size: 1.15em;
       text-align: center;
-      max-width: 500px;
-      line-height: 1.4;
-      padding: 0 10px;
+      max-width: 520px;
+      line-height: 1.6;
     }
 
+    .vip-info strong {
+      color: #d3feff;
+    }
+
+    /* ================= PRICE CARD ================= */
+
     .vip-price {
-      background-color: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      border-radius: 15px;
-      padding: 20px;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 18px;
+      padding: 25px 30px;
       font-size: 1.1em;
-      max-width: 350px;
-      width: 90%;
       text-align: center;
+      box-shadow: 0 0 24px rgba(211,254,255,0.35);
+    }
+
+    .vip-price span {
+      display: block;
+      font-size: 0.9em;
+      color: rgba(255,255,255,0.85);
     }
 
     .vip-price strong {
-      color: #a3ddf8;
-      font-size: 1.4em;
+      display: block;
+      color: #d3feff;
+      font-size: 1.5em;
+      margin-top: 6px;
     }
+
+    /* ================= BUTTONS ================= */
 
     .buttons {
       margin-top: 10px;
       display: flex;
-      gap: 15px;
+      gap: 25px;
       flex-wrap: wrap;
       justify-content: center;
-      width: 100%;
     }
 
     .btn {
-      padding: 12px 25px;
-      font-size: 1em;
+      padding: 14px 36px;
+      font-size: 1.05em;
       border: none;
-      border-radius: 25px;
+      border-radius: 30px;
       cursor: pointer;
       color: white;
-      transition: background 0.3s ease;
-      min-width: 120px;
-      text-align: center;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.3s ease;
     }
 
     .btn-buy {
-      background-color: #28a745;
+      background: linear-gradient(135deg, #28a745, #1e7e34);
+      box-shadow: 0 6px 18px rgba(0,255,100,0.35);
     }
 
     .btn-buy:hover {
-      background-color: #218838;
+      transform: scale(1.08);
+      box-shadow: 0 8px 26px rgba(0,255,120,0.6);
     }
 
     .btn-back {
-      background-color: #555;
+      background: linear-gradient(135deg, #555, #222);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.6);
     }
 
     .btn-back:hover {
-      background-color: #333;
+      transform: scale(1.08);
+      background: linear-gradient(135deg, #666, #111);
     }
-
-    /* Neve */
-    .snowflake {
-      position: fixed;
-      top: -10px;
-      color: white;
-      font-size: 1em;
-      user-select: none;
-      pointer-events: none;
-      animation: fall linear infinite;
-      opacity: 0.9;
-      z-index: 1;
-    }
-
-    @keyframes fall {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(110vh); }
-    }
-
-    /* Ajuste RESPONSIVO para Mobile */
-    @media screen and (max-width: 600px) {
-      header { font-size: 1.9em; padding: 25px 10px; }
-      .vip-info { font-size: 1.05em; }
-      .btn { font-size: 0.9em; padding: 10px 18px; }
-    }
-
   </style>
 </head>
+
 <body>
 
-  <!-- neve -->
-  <script>
-    function criarNeve() {
-      const snow = document.createElement("div");
-      snow.classList.add("snowflake");
-      snow.innerHTML = "❄";
-      snow.style.left = Math.random() * 100 + "vw";
-      snow.style.animationDuration = (Math.random() * 5 + 3) + "s";
-      snow.style.fontSize = (Math.random() * 18 + 10) + "px";
-      document.body.appendChild(snow);
-      setTimeout(() => snow.remove(), 9000);
-    }
-    setInterval(criarNeve, 60);
-  </script>
+  <!-- ================= HEADER ================= -->
+  <header>
+    <h1>VIP PLATINA</h1>
+    <p>Vantagens avançadas para quem quer subir de nível no HiLLs RP</p>
+  </header>
 
-  <header>VIP PLATINA 🎅🎄</header>
-
+  <!-- ================= CONTENT ================= -->
   <div class="vip-content">
-
-    <img src="mercedes.png" alt="Mercedes">
+    <img src="mercedes.png" alt="VIP Platina - Mercedes">
 
     <div class="vip-info">
-      <p><strong>Mercedes ⚪🎄</strong></p>
-      <p><strong>Pistola, AK47, Colete e 45 mil por semana!</strong> 💸</p>
-      <p>+ Cargo exclusivo no discord! ⚪🔫 🎅</p>
+      <p><strong>Veículo:</strong> Mercedes</p>
+      <p><strong>Benefícios semanais:</strong> Pistola + AK-47 + Colete + R$ 45.000 💸</p>
+      <p>✔ Cargo exclusivo no Discord ⚪🔫</p>
     </div>
 
     <div class="vip-price">
-      <p><strong>Mensal:</strong> R$ 9,90</p>
+      <span>Plano Mensal</span>
+      <strong>R$ 9,90</strong>
     </div>
 
     <div class="buttons">
-      <button class="btn btn-buy" onclick="window.open('https://discord.com/channels/1441911366251450511/1449457443774923037', '_blank')">Comprar</button>
-      <button class="btn btn-back" onclick="window.location.href='index.html'">Voltar</button>
-    </div>
+      <button class="btn btn-buy"
+        onclick="window.open('https://discord.com/channels/1441911366251450511/1449457443774923037','_blank')">
+        Comprar VIP
+      </button>
 
+      <button class="btn btn-back" onclick="window.location.href='index.html'">
+        Voltar
+      </button>
+    </div>
   </div>
 
 </body>
